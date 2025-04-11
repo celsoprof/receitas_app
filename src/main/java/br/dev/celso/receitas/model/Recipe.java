@@ -26,6 +26,10 @@ public class Recipe {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "recipe_id")
     private List<Direction> directions;
+    
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Recipe() {}
 
@@ -91,6 +95,14 @@ public class Recipe {
     
     public void setDirections(List<Direction> directions) {
 		this.directions = directions;
+	}
+    
+    public Category getCategory() {
+		return category;
+	}
+    
+    public void setCategory(Category category) {
+		this.category = category;
 	}
 
     @Override
