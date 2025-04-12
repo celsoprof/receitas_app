@@ -35,16 +35,16 @@ public class RecipeController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Recipe>> getAll(){
+	public ResponseEntity<List<RecipeDTO>> getAll(){
 		List<Recipe> recipes = recipeRepository.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(recipes);
+		if (!recipes.isEmpty()){
+			List<RecipeDTO> recipeDTOS = recipes.stream().map(RecipeDTO::new).toList();
+			return ResponseEntity.status(HttpStatus.OK).body(recipeDTOS);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+
 	}
-	
-//	@GetMapping("/{id}")
-//	public ResponseEntity<Recipe> findById(@PathVariable Long id){
-//		Recipe recipe = recipeRepository.findById(id).get();
-//		return ResponseEntity.status(HttpStatus.OK).body(recipe);
-//	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<RecipeDTO> findById(@PathVariable Long id){

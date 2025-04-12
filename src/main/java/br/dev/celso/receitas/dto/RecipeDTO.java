@@ -93,4 +93,5 @@ public class RecipeDTO {
     public void setDirections(List<Direction> directions) {
         this.directions = directions;
     }
+
 }
