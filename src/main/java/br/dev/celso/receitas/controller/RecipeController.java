@@ -1,7 +1,9 @@
 package br.dev.celso.receitas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import br.dev.celso.receitas.dto.RecipeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,10 +40,21 @@ public class RecipeController {
 		return ResponseEntity.status(HttpStatus.OK).body(recipes);
 	}
 	
+//	@GetMapping("/{id}")
+//	public ResponseEntity<Recipe> findById(@PathVariable Long id){
+//		Recipe recipe = recipeRepository.findById(id).get();
+//		return ResponseEntity.status(HttpStatus.OK).body(recipe);
+//	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Recipe> findById(@PathVariable Long id){
-		Recipe recipe = recipeRepository.findById(id).get();
-		return ResponseEntity.status(HttpStatus.OK).body(recipe);
+	public ResponseEntity<RecipeDTO> findById(@PathVariable Long id){
+		Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+		if (recipeOptional.isPresent()){
+			RecipeDTO recipeDTO = new RecipeDTO(recipeOptional.get());
+			return ResponseEntity.ok().body(recipeDTO);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 }
