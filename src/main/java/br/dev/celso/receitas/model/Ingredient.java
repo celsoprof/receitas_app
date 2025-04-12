@@ -1,6 +1,8 @@
 package br.dev.celso.receitas.model;
 
+import br.dev.celso.receitas.dto.IngredientDTO;
 import jakarta.persistence.*;
+import org.springframework.beans.BeanUtils;
 
 
 import java.util.Objects;
@@ -21,6 +23,10 @@ public class Ingredient {
     public Ingredient(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Ingredient(IngredientDTO ingredientDTO){
+        BeanUtils.copyProperties(ingredientDTO, this);
     }
 
     public Long getId() {

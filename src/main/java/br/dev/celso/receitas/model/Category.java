@@ -3,6 +3,7 @@ package br.dev.celso.receitas.model;
 import java.util.List;
 import java.util.Objects;
 
+import br.dev.celso.receitas.dto.CategoryDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.springframework.beans.BeanUtils;
 
 @Entity
 @Table(name = "tb_categories")
@@ -36,6 +38,10 @@ public class Category {
 		this.id = id;
 		this.name = name;
 		this.imageUrl = imageUrl;
+	}
+
+	public Category(CategoryDTO categoryDTO){
+		BeanUtils.copyProperties(categoryDTO, this);
 	}
 
 	public Long getId() {
