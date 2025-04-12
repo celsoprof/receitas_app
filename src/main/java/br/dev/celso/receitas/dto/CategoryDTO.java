@@ -1,11 +1,6 @@
 package br.dev.celso.receitas.dto;
 
 import br.dev.celso.receitas.model.Category;
-import br.dev.celso.receitas.model.Recipe;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
