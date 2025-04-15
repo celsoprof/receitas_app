@@ -1,6 +1,7 @@
 package br.dev.celso.receitas.model;
 
 import br.dev.celso.receitas.dto.RecipeDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.beans.BeanUtils;
 

@@ -29,6 +29,7 @@ public class RecipeDTO {
         this.cookingTime = recipe.getCookingTime();
         this.ingredients = recipe.getIngredients();
         this.directions = recipe.getDirections();
+
         if (recipe.getCategory() != null){
             this.categoryId = recipe.getCategory().getId();
             this.categoryName = recipe.getCategory().getName();

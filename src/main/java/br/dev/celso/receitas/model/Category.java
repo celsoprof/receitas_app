@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import br.dev.celso.receitas.dto.CategoryDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +28,7 @@ public class Category {
 	private String imageUrl;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Recipe> recipes;
 	
 	public Category() {
