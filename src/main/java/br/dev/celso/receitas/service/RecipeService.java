@@ -19,10 +19,14 @@ public class RecipeService {
     private RecipeRepository recipeRepository;
 
     public Recipe2DTO save(Recipe2DTO recipe2DTO) {
+
+        System.out.println("recepe2DTO-->" + recipe2DTO.toString());
         Recipe recipe = new Recipe();
         BeanUtils.copyProperties(recipe2DTO, recipe);
         Recipe newRecipe = recipeRepository.save(recipe);
+        System.out.println("newRecipe-->" + newRecipe.toString());
         BeanUtils.copyProperties(newRecipe, recipe2DTO);
+        System.out.println("recepe2DTO-->" + recipe2DTO.toString());
         return recipe2DTO;
     }
 
@@ -75,7 +79,9 @@ public class RecipeService {
                                 )).toList(),
                         recipe.getCategory()
                 ));
-        return recipe2DTO.isEmpty() ? null : recipe2DTO.get();
+        return recipe2DTO.orElse(null);
     }
+
+
 
 }

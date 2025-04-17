@@ -16,7 +16,18 @@ public class Ingredient {
     private Long id;
 
     private String name;
-    private double quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
+
+//    public Recipe getRecipe() {
+//        return recipe;
+//    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
 
     public Ingredient() {}
 

@@ -34,6 +34,7 @@ public class RecipeController {
 	public ResponseEntity<Recipe2DTO> save(@RequestBody Recipe2DTO recipe2DTO) {
 
 		System.out.println("Recipe save called...");
+		System.out.println(recipe2DTO.toString());
 		Recipe2DTO recipeOut = recipeService.save(recipe2DTO);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(recipeOut);
